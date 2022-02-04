@@ -1,13 +1,4 @@
-const http=require('http')
-const server=http.createServer((req,res)=>{
-    if (req.url==='/') {
-        res.end('welcome to home page')
-    }
-    if (req.url==='/about') {
-        res.end('welcome to about page')
-
-    }else{
-        res.end('wrong end point please go with the right time')
-    }
-})
-server.listen(8000)
+const lodash=require('lodash')
+const items=[1,2,[3,[4]]]
+const newItems=lodash.flattenDeep(items)
+console.log(newItems);
