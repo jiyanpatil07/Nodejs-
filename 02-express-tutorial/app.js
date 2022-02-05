@@ -1,6 +1,12 @@
 const http=require('http')
 const {readFileSync}=require('fs')
-const homePage=readFileSync('./index.html')
+const homePage=readFileSync('../02-express-tutorial/navbar-app/index.html')
+const homestyles=readFileSync('../02-express-tutorial/navbar-app/styles.css')
+
+const homeimage=readFileSync('../02-express-tutorial/navbar-app/logo.svg')
+
+const homejs=readFileSync('../02-express-tutorial/navbar-app/browser-app.js')
+
 console.log(homePage);
 const server=http.createServer((req,res)=>{
     const url=req.url
@@ -14,6 +20,23 @@ const server=http.createServer((req,res)=>{
 else if (url==='/about') {
     res.writeHead(200,{'content-type':'text/html'})
     res.write('<h1>Hello welcome to about page</h1>')
+    res.end()
+    
+}
+else if (url==='/styles.css') {
+    res.writeHead(200,{'content-type':'text/css'})
+    res.write(homestyles)
+    res.end()
+    
+}
+else if (url==='/logo.svg') {
+    res.writeHead(200,{'content-type':'image/svg+xml'})
+    res.write(homeimage)
+    res.end()
+    
+}else if (url==='/browser-app.js') {
+    res.writeHead(200,{'content-type':'text/javascript'})
+    res.write(homejs)
     res.end()
     
 }
